@@ -19,4 +19,4 @@ chmod +x hagn3s
 <p align="center">
   example on the showterm >>   http://showterm.io/5bbf1b270493cfaf3fc3f#fast 
   <p align="center">
-    website http://showterm.io/5bbf1b270493cfaf3fc3f#fast
+    website https://terminalclub.github.io/
