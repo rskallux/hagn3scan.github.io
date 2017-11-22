@@ -1,0 +1,3 @@
+#!/bin/bash
+/etc/init.d/tor start
+proxychains firefox https://duckduckgo.com

