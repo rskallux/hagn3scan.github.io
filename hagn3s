@@ -174,7 +174,9 @@ nmap -p80 --script http-google-email --script-args http-google-email.pages=10 ww
 nmap -sU --script dns-fuzz --script-args timelimit=2h www.$nome 
 nmap -p 445 www.$nome --script=smb-double-pulsar-backdoor 
 nmap --script=http-phpself-xss -p80 www.$nome 
- nmap -p8728 --script mikrotik-routeros-brute www.$nome
+# analise DDOS atack
+nmap -sU -A -PN -n -pU:19,53,123,161 -script=ntp-monlist,dns-recursion,snmp-sysdescr $nome
+nmap -p8728 --script mikrotik-routeros-brute www.$nome
 #zombies
 nmap -Pn -p -sI $nome 192.168.10
 nmap -Pn -p -sI $nome 192.168.1.9
