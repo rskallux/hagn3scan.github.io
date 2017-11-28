@@ -5,7 +5,7 @@ copy script to / opt directory
 <p align="center">
 install dependencies ===========
 <p align="center">
-sudo apt-get install nmap & tor & hydra-gtk & imagemagick
+sudo apt-get install nmap & tor & hydra-gtk & imagemagick & screen
 <p align="center">
 running  ===========================
 <p align="center">  
